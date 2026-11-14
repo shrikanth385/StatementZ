@@ -1,4 +1,4 @@
-# StatementZ — Refactored
+# StatementZ 
 
 This version keeps the existing StatementZ browser application and its current feature set while reorganizing the source into clearer responsibility-based folders.
 

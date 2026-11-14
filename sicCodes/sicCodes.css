@@ -1,0 +1,307 @@
+/* Standalone DE SIC codes page */
+.sic-page {
+  --sic-page-animation-duration: 0.32s;
+  --sic-surface-animation-duration: 0.3s;
+  --sic-option-animation-duration: 0.2s;
+
+  min-height: 100dvh;
+  height: auto;
+
+  display: block;
+
+  padding: clamp(1.25rem, 2vw, 2.75rem);
+
+  overflow: visible;
+
+  animation: sicPageEnter var(--sic-page-animation-duration) ease both;
+}
+
+.sic-shell {
+  --sic-modal-width: clamp(18rem, 20vw, 24rem);
+  --sic-modal-height: clamp(28rem, 68vh, 44rem);
+  --sic-option-height: clamp(3rem, 3.2vh, 3.6rem);
+
+  width: min(100%, 160rem);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: clamp(1.25rem, 1.6vw, 2.25rem);
+}
+
+.sic-hero {
+  position: sticky;
+
+  top: clamp(0.75rem, 1vw, 1.25rem);
+
+  z-index: 20;
+
+  align-self: start;
+
+  gap: clamp(1rem, 1.4vw, 2rem);
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, auto) minmax(0, 1fr);
+
+  align-items: center;
+
+  animation: sicSurfaceEnter var(--sic-surface-animation-duration) ease both;
+}
+
+.sic-result-label,
+.sic-result-text {
+  margin: 0;
+
+  color: var(--text-secondary);
+}
+
+.sic-hero h1 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(2rem, 3vw, 4rem);
+
+  line-height: 1;
+}
+
+.sic-hero .ownership-note {
+  margin-top: 0.75rem;
+}
+
+.sic-header-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 1rem;
+
+  flex-wrap: wrap;
+}
+
+.sic-home-link {
+  text-decoration: none;
+}
+
+.sic-hero-code {
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0.35rem;
+
+  text-align: center;
+}
+
+.sic-result-label {
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+
+  font-size: 0.78rem;
+
+  font-weight: 900;
+}
+
+.sic-result-code {
+  color: var(--text-primary);
+
+  font-size: clamp(2.25rem, 4vw, 5.5rem);
+
+  font-weight: 950;
+
+  line-height: 1;
+}
+
+.sic-result-text {
+  font-size: clamp(1rem, 1vw, 1.3rem);
+
+  font-weight: 800;
+}
+
+.sic-branch-tree {
+  display: grid;
+
+  grid-auto-flow: column;
+
+  grid-auto-columns: minmax(0, var(--sic-modal-width));
+
+  gap: clamp(1rem, 1.15vw, 1.65rem);
+
+  align-items: flex-start;
+
+  justify-content: flex-start;
+
+  overflow-x: auto;
+
+  overflow-y: hidden;
+
+  padding-block-end: 0.35rem;
+}
+
+.sic-branch {
+  width: var(--sic-modal-width);
+
+  min-height: var(--sic-modal-height);
+
+  max-width: 100%;
+
+  min-width: 0;
+
+  gap: clamp(0.75rem, 0.8vw, 1rem);
+}
+
+.sic-branch-enter {
+  animation: sicSurfaceEnter var(--sic-surface-animation-duration) ease both;
+  animation-delay: var(--sic-branch-delay, 0ms);
+}
+
+.sic-branch-title {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(1rem, 1vw, 1.25rem);
+
+  font-weight: 900;
+}
+
+.sic-options {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: stretch;
+
+  gap: clamp(0.5rem, 0.55vw, 0.75rem);
+}
+
+.sic-option {
+  width: 100%;
+
+  max-width: 100%;
+
+  min-height: var(--sic-option-height);
+
+  height: auto;
+
+  flex: 0 0 auto;
+
+  justify-content: center;
+
+  text-align: center;
+
+  white-space: normal;
+
+  overflow-wrap: anywhere;
+
+  word-break: normal;
+
+  line-height: 1.35;
+}
+
+.sic-branch-enter .sic-option {
+  animation: sicOptionEnter var(--sic-option-animation-duration) ease both;
+  animation-delay: var(--sic-option-delay, 0ms);
+}
+
+.sic-option:hover,
+.sic-option:focus-visible {
+  transform: translateY(-0.0625rem);
+}
+
+@keyframes sicPageEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sicSurfaceEnter {
+  from {
+    opacity: 0;
+    transform: translateY(0.7rem) scale(0.985);
+    filter: blur(0.18rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sicOptionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sic-page,
+  .sic-hero,
+  .sic-branch,
+  .sic-option {
+    animation: none;
+  }
+
+  .sic-option:hover,
+  .sic-option:focus-visible {
+    transform: none;
+  }
+}
+
+@media (max-width: 56rem) {
+  .sic-page {
+    padding: 0.75rem;
+  }
+
+  .sic-shell {
+    --sic-modal-width: 100%;
+    --sic-modal-height: auto;
+  }
+
+  .sic-hero {
+    align-items: stretch;
+
+    grid-template-columns: 1fr;
+  }
+
+  .sic-header-actions {
+    justify-content: stretch;
+  }
+
+  .sic-home-link {
+    flex: 1 1 auto;
+  }
+
+  .sic-branch-tree {
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    grid-template-columns: 1fr;
+  }
+
+  .sic-branch {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,416 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Start the required statement-data request while HTML/CSS/modules are loading. -->
+    <link rel="preload" href="statements.json" as="fetch" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="icon" id="appFavicon" href="" />
+
+    <title>StatementZ</title>
+  </head>
+
+  <body>
+    <div class="boot-screen" id="bootScreen">
+      <div class="boot-card">
+        <h1>StatementZ</h1>
+
+        <div id="bootInputContainer" class="boot-input-container">
+          <div class="workspace-section boot-input-group" data-control-type="input">
+            <label for="agentNameInput">Enter Agent Name</label>
+            <input
+              class="workspace-input"
+              id="agentNameInput"
+              type="text"
+              placeholder="Agent Name"
+              autocomplete="name"
+              data-name-input="agent"
+            />
+            <small class="input-warning" id="agentNameInputWarning"></small>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" id="startApplication" type="button">
+          Launch Workspace
+        </button>
+      </div>
+    </div>
+    <!-- HEADER -->
+    <header class="modal header">
+      <div class="header-left"></div>
+
+      <div class="header-center">
+        <div class="dropdown-wrapper">
+          <button
+            class="btn btn-secondary app-dropdown-trigger"
+            id="marketplaceDropdownTrigger"
+          >
+            Marketplace
+          </button>
+
+          <div
+            class="app-dropdown header-grid-dropdown marketplace-dropdown"
+            id="marketplaceDropdown"
+          ></div>
+        </div>
+        <div class="dropdown-wrapper">
+          <button
+            class="btn btn-secondary app-dropdown-trigger"
+            id="currencyDropdownTrigger"
+          >
+            Currency
+          </button>
+
+          <div
+            class="app-dropdown header-grid-dropdown currency-dropdown"
+            id="currencyDropdown"
+          ></div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="duals-button" id="dualsButton" type="button">
+          Duals
+        </button>
+      </div>
+    </header>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="modal sidebar left">
+      <div class="sidebar-scroll">
+        <div class="brand-row">
+          <h1 class="brand">StatementZ</h1>
+
+          <label class="switch" title="Toggle light mode">
+            <input
+              id="themeToggle"
+              type="checkbox"
+              aria-label="Toggle light mode"
+            />
+            <span class="slider">
+              <div class="star star_1"></div>
+              <div class="star star_2"></div>
+              <div class="star star_3"></div>
+              <svg viewBox="0 0 16 16" class="cloud" aria-hidden="true">
+                <path
+                  transform="matrix(.77976 0 0 .78395-299.99-418.63)"
+                  fill="#fff"
+                  d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
+                ></path>
+              </svg>
+            </span>
+          </label>
+        </div>
+
+        <p class="ownership-note">Crafted by Shrikanth K</p>
+
+        <button class="btn btn-primary tool-btn" data-tool="opening">
+          👋 Opening
+        </button>
+
+        <button class="btn btn-primary tool-btn" data-tool="holdUnhold">
+          ⏸️ Hold / Unhold
+        </button>
+
+        <div class="dropdown-wrapper">
+          <button class="tool-btn apology-tool-btn" id="apologyDropdownTrigger">
+            🙏 Apology
+          </button>
+
+          <div class="app-dropdown sidebar-dropdown" id="apologyDropdown">
+            <button class="btn btn-primary tool-btn" data-tool="generalApology">
+              General
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="DNR">
+              DNR
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="itemMissing">
+              Item Missing / Part Missing
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="preDelivery">
+              Pre-delivery
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="returnsApology">
+              Returns
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="wrongItem">
+              Wrong item
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="damagedDefective"
+            >
+              Damaged / Defective
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="unidentifiedCharge"
+            >
+              Unknown Charge
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="retroCharge">
+              RetroCharge
+            </button>
+          </div>
+        </div>
+        <div class="dropdown-wrapper">
+          <button class="tool-btn apology-tool-btn" id="probingDropdownTrigger">
+            🕵️ Probing
+          </button>
+          <div class="app-dropdown sidebar-dropdown" id="probingDropdown">
+            <button class="btn btn-primary tool-btn" data-tool="generalProbing">
+              Order-ID / Item Name
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="issueProbing">
+              Issue Probing
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="dnrIMprobing">
+              DNR/IM Probing
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="addressProbing">
+              Address Probing
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="itemNameProbing"
+            >
+              Item Name Probing
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="lateContactProbing"
+            >
+              Late Contact Probing
+            </button>
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="unknownChargeProbing"
+            >
+              Unknown Charge Probing
+            </button>
+          </div>
+        </div>
+        <div class="dropdown-wrapper">
+          <button
+            class="tool-btn apology-tool-btn"
+            id="concessionDropdownTrigger"
+          >
+            💵 Issuing Concession
+          </button>
+          <div class="app-dropdown sidebar-dropdown" id="concessionDropdown">
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="returnLessConcession"
+            >
+              Return-less Probe
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="returnReqConcession"
+            >
+              Return-required Probe
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="issuingRefund">
+              Issuing refund
+            </button>
+
+            <button
+              class="btn btn-primary tool-btn"
+              data-tool="issuingReplacement"
+            >
+              Issuing replacement
+            </button>
+
+            <button class="btn btn-primary tool-btn" data-tool="issuingPromo">
+              Token Apology
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-primary tool-btn" data-tool="askingMore">
+          💁 Asking more
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="closingThanks">
+          🤝 Closing
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="idleStatements">
+          ⏳ Idle
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="leadContact">
+          🧑‍💼 Lead Contact
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="dnrItemMissing">
+          🥷 DNR / Item missing
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="preDeliverySupport">
+          🚚 Pre-delivery
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="photoVerification">
+          📸 Photo Verification
+        </button>
+        <div class="dropdown-wrapper">
+          <button class="tool-btn apology-tool-btn" id="returnsDropdownTrigger">
+            🔄 Returns
+          </button>
+          <div class="app-dropdown sidebar-dropdown" id="returnsDropdown">
+            <button class="btn btn-primary tool-btn" data-tool="returns">
+              Normal Returns
+            </button>
+            <button class="btn btn-primary tool-btn" data-tool="retrocharge">
+              Retrocharge
+            </button>
+            <button class="btn btn-primary tool-btn" data-tool="repairs">
+              Repairs
+            </button>
+            <button class="btn btn-primary tool-btn" data-tool="returnStatus">
+              Return Status
+            </button>
+            <button class="btn btn-primary tool-btn" data-tool="returnDenials">
+              Return Denials
+            </button>
+          </div>
+        </div>
+        <button class="btn btn-primary tool-btn" data-tool="mfnOrders">
+          🏪 MFN orders
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="transfers">
+          ➡️ Transfers
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="escalations">
+          ⏫ Escalations
+        </button>
+        <button class="btn btn-primary tool-btn" data-tool="falsePromises">
+          🤥 False promises
+        </button>
+      </div>
+    </aside>
+
+    <!-- CENTER WORKSPACE -->
+    <main class="modal center" id="workspace"></main>
+
+    <!-- RIGHT TOP TOOLBAR -->
+    <aside class="modal sidebar right top">
+      <button class="btn btn-primary tool-btn" data-tool="notepad">
+        📒 Notepad
+      </button>
+      <button class="btn btn-primary tool-btn" data-tool="bellboy">
+        🔔 BellBoy
+      </button>
+      <a
+        class="btn btn-primary tool-btn metricmate-tool-btn"
+        href="https://drive-render.corp.amazon.com/view/skondamc@/MetricMate/index.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Open MetricMate"
+        aria-label="Open MetricMate"
+      >
+        <img src="assets/metricmate-favicon.svg" alt="" class="metricmate-tool-icon" aria-hidden="true" />
+        <span>MetricMate</span>
+      </a>
+      <button class="btn btn-primary tool-btn" data-tool="annotations">
+        📝 Annotations
+      </button>
+
+      <button class="btn btn-primary tool-btn" data-tool="dartTemplate">
+        🎯 DART Template
+      </button>
+
+      <button class="btn btn-primary tool-btn" data-tool="dateCalculator">
+        📅 Date Calculator
+      </button>
+
+      <a
+        class="btn btn-primary tool-btn hidden"
+        href="./sicCodes/index.html"
+        target="de-sic-codes"
+        data-visible-marketplace="DE"
+      >
+        ⚙️ DE SIC codes
+      </a>
+
+      <button class="btn btn-primary tool-btn" data-tool="pastVersions">
+        💾 Past Versions
+      </button>
+    </aside>
+
+    <!-- RIGHT BOTTOM -->
+    <aside class="modal sidebar right bottom">
+      <div class="search-wrapper">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search country, city, place..."
+        />
+
+        <div class="dropdown"></div>
+      </div>
+
+      <div class="clock-card">
+        <div class="clock-location"></div>
+
+        <div class="time">--:--:--</div>
+
+        <div class="date">Loading...</div>
+
+        <div class="clock-bellboy-card" id="bellboyClockCard" data-armed="false" aria-live="polite">
+          <div class="clock-bellboy-title">🔔 BellBoy</div>
+          <p class="clock-bellboy-nudge" id="bellboyClockNudge">
+            Set an alarm in BellBoy to see the next alarm here.
+          </p>
+          <div class="clock-bellboy-upcoming" id="bellboyClockUpcoming" hidden>
+            <div class="clock-bellboy-alarm-label" id="bellboyClockAlarmLabel"></div>
+            <div class="clock-bellboy-timer" id="bellboyClockTimer"></div>
+          </div>
+        </div>
+
+        <div class="indicator">🌞 Day</div>
+      </div>
+    </aside>
+
+    <div
+      class="bellboy-notification-overlay"
+      id="bellboyNotification"
+      hidden
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="bellboyNotificationTitle"
+      aria-describedby="bellboyNotificationMessage bellboyNotificationTimezone bellboyNotificationAudioStatus"
+    >
+      <section class="bellboy-notification-card">
+        <div class="bellboy-notification-heading">
+          <h2 id="bellboyNotificationTitle"></h2>
+          <small id="bellboyNotificationTimezone"></small>
+          <small id="bellboyNotificationAudioStatus" aria-live="polite"></small>
+        </div>
+        <p id="bellboyNotificationMessage"></p>
+        <button
+          class="btn btn-primary bellboy-notification-dismiss"
+          id="bellboyNotificationDismiss"
+          type="button"
+        ></button>
+      </section>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

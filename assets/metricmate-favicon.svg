@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">MetricMate</title>
+  <desc id="desc">A stylized performance dashboard with an upward metric graph and check mark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#146ef5"/>
+      <stop offset="1" stop-color="#76abae"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <rect x="10" y="11" width="44" height="42" rx="9" fill="#fff" opacity=".97"/>
+  <path d="M17 44V36h7v8h-7Zm11 0V29h7v15h-7Zm11 0V22h7v22h-7Z" fill="#146ef5" opacity=".22"/>
+  <path d="M17 35l9-8 7 4 12-12" fill="none" stroke="#146ef5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M43 19h4v4" fill="none" stroke="#146ef5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="17" cy="35" r="2.5" fill="#76abae"/>
+  <circle cx="26" cy="27" r="2.5" fill="#76abae"/>
+  <circle cx="33" cy="31" r="2.5" fill="#76abae"/>
+  <circle cx="45" cy="19" r="2.5" fill="#76abae"/>
+  <path d="M40 42l3 3 7-8" fill="none" stroke="#76abae" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
